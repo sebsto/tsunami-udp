@@ -985,7 +985,7 @@ int parse_fraction(const char *fraction, u_int16_t *num, u_int16_t *den)
  *
  * Returns non-0 if the block has already been received
  *------------------------------------------------------------------------*/
-inline int got_block(ttp_session_t* session, u_int32_t blocknr)
+int got_block(ttp_session_t* session, u_int32_t blocknr)
 {
     if (blocknr > session->transfer.block_count)
         return 1;

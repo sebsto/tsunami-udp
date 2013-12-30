@@ -239,7 +239,7 @@ int            command_quit          (command_t *command, ttp_session_t *session
 int            command_set           (command_t *command, ttp_parameter_t *parameter);
 int            command_dir           (command_t *command, ttp_session_t *session);
 
-inline int     got_block             (ttp_session_t* session, u_int32_t blocknr);
+int     got_block             (ttp_session_t* session, u_int32_t blocknr);
 
 /* config.c */
 void           reset_client          (ttp_parameter_t *parameter);
