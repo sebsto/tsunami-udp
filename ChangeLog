@@ -3,6 +3,9 @@ The current Tsunami protocol version is: v1.1
 Improvements and protocol version compliant new features
 are added in the cvs builds.
 
+build 20131230
+   - do not inline got_block function - allows to compile on OS X Mavericks (thanks Matt Yanchyshyn for the suggestion) 
+
 v1.1 CvsBuild 42
   - changes to realtime server code:
    - added EVN 2009 filename aux info parsing so that the
