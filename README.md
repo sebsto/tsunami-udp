@@ -1,3 +1,8 @@
+BINARIES
+
+Binaries [are available](https://github.com/sebsto/tsunami-udp/wiki/Binaries) for your convenience
+
+========================================================================
 
 NOTE: below is the original unmodified 2002 README, it does not fully
 reflect the current status... ;-) After reading this file, also see
