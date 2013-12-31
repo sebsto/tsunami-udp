@@ -4,6 +4,7 @@
 # Security group for Tsunami Client : UDP 46224
 
 # packages to install
+yum upgrade -y
 yum install -y gcc gcc-cpp autoconf automake git
 
 # download source code
