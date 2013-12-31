@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh +x
 
 # Fix Local bug in Python / Mac
 export LANG=
