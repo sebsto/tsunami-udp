@@ -17,6 +17,16 @@
   
   "Parameters" : {
 
+      "KeyName": {
+        "Description" : "The SSH Key Pair name to use",
+        "Type": "String"
+      },
+
+      "InstanceType": {
+        "Description" : "The type of instance to start",
+        "Type": "String"
+      },
+
       "HostedDomain": {
         "Description" : "The hosted domain where we will add DNS records",
         "Type": "String"
@@ -77,13 +87,13 @@
 	      "Type" : "AWS::EC2::Instance", 
 	      "Properties" : {
 	        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionToAMI", { "Ref" : "AWS::Region" }, "AMI"]},
-	        "InstanceType" : "t1.micro",
+	        "InstanceType" : {"Ref" : "InstanceType"},
 	        "SecurityGroups" : [{ "Ref" : "TsunamiSecurityGroup" }],
 			"UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
 						"#!/bin/bash\n",
 			            "wget -q -O - 'https://raw.github.com/sebsto/tsunami-udp/master/bootstrap.sh' | sh"
 						] ] } },
-            "KeyName" : "sst-aws",
+            "KeyName" : {"Ref" : "KeyName"},
 			"Tags" : [ {"Key" : "Name", "Value" : "TsunamiServer"}],
             "IamInstanceProfile" : { "Ref" : "TsunamiS3BucketAccessProfile" }
 	      }
