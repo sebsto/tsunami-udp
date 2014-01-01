@@ -9,7 +9,7 @@ export LC_CTYPE=
 #
 # 1. Make the binaries
 #
-make
+make > ./make.log
 
 #
 # 2. Compute the hashes
@@ -52,7 +52,7 @@ $SHA_CMD $IN_FILES >> $OUT_FILE
 BUCKET=`cat /dist_bucket_name` #file with bucket name is create by CFN user data
 
 #provide a default name when this script is called outside the context of CFN
-if ["X$BUCKET" == "X"]; then
+if [ -z $BUCKET ]; then
 	BUCKET='tsunami-udp'
 fi
 
