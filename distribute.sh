@@ -49,7 +49,13 @@ $SHA_CMD $IN_FILES >> $OUT_FILE
 # (AWS CLI must be configured - see http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 #
 
-BUCKET=tsunami-udp
+BUCKET=`cat /dist_bucket_name` #file with bucket name is create by CFN user data
+
+#provide a default name when this script is called outside the context of CFN
+if ["X$BUCKET" == "X"]; then
+	BUCKET='tsunami-udp'
+fi
+
 BUCKET_REGION="eu-west-1"
 TSUNAMI_VERSION=`cat include/tsunami-cvs-buildnr.h  | grep TSUNAMI_CVS_BUILDNR | cut -f 2 -d "\""`
 OS_VERSION=`uname -a | cut -f 3 -d " "`

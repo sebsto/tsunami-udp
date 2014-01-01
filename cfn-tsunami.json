@@ -27,6 +27,11 @@
         "Type": "String"
       },
 
+      "S3DistributionBucketName": {
+        "Description" : "The name of the bucket where to push compiled binaries",
+        "Type": "String"
+      },
+
       "HostedDomain": {
         "Description" : "The hosted domain where we will add DNS records",
         "Type": "String"
@@ -35,6 +40,13 @@
   },
  
   "Resources" : {
+	  
+	  "S3DistributionBucket" : {
+		   "Type" : "AWS::S3::Bucket",
+		   "Properties" : {
+		      "BucketName" : {"Ref" : "S3DistributionBucketName"},
+		   }
+	  },  
  
       "TsunamiS3BucketAccessRole": {
           "Type": "AWS::IAM::Role",
@@ -55,7 +67,10 @@
                              "Statement": [{
                                          "Effect": "Allow",
                                          "Action": "s3:*",
-                                         "Resource": ["arn:aws:s3:::tsunami-udp", "arn:aws:s3:::tsunami-udp/*"]
+                                         "Resource": [
+											    { "Fn::Join" : ["", ["arn:aws:s3:::", {"Ref" : "S3DistributionBucketName"}]] },
+												{ "Fn::Join" : ["", ["arn:aws:s3:::", {"Ref" : "S3DistributionBucketName"}, "/*" ]] }
+											 ]
                                         }]
                                }
                            } ]
@@ -66,9 +81,7 @@
           "Type": "AWS::IAM::InstanceProfile",
           "Properties": {
               "Path": "/",
-              "Roles": [ {
-                        "Ref": "TsunamiS3BucketAccessRole"
-                        } ]
+              "Roles": [ {"Ref": "TsunamiS3BucketAccessRole"} ]
           }
       },
       
@@ -91,7 +104,8 @@
 	        "SecurityGroups" : [{ "Ref" : "TsunamiSecurityGroup" }],
 			"UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
 						"#!/bin/bash\n",
-			            "wget -q -O - 'https://raw.github.com/sebsto/tsunami-udp/master/bootstrap.sh' | sh"
+						"echo \"", { "Ref" : "S3DistributionBucketName" }, "\" > /dist_bucket_name # will be reused by bootstrap script\n",
+			            "wget -q -O - 'https://raw.github.com/sebsto/tsunami-udp/master/bootstrap.sh' | sh\n"
 						] ] } },
             "KeyName" : {"Ref" : "KeyName"},
 			"Tags" : [ {"Key" : "Name", "Value" : "TsunamiServer"}],
