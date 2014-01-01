@@ -19,22 +19,26 @@
 
       "KeyName": {
         "Description" : "The SSH Key Pair name to use",
-        "Type": "String"
+        "Type": "String",
+		"Default": "sst-aws"
       },
 
       "InstanceType": {
         "Description" : "The type of instance to start",
-        "Type": "String"
+        "Type": "String",
+		"Default": "m1.xlarge"
       },
 
       "S3DistributionBucketName": {
         "Description" : "The name of the bucket where to push compiled binaries",
-        "Type": "String"
+        "Type": "String",
+		"Default": "tsunami-udp-sst"
       },
 
       "HostedDomain": {
         "Description" : "The hosted domain where we will add DNS records",
-        "Type": "String"
+        "Type": "String",
+		"Default": "aws.stormacq.com"
       }
 
   },
