@@ -1,9 +1,9 @@
 NEW STUFFS
 
-This repository contains a couple of addition scripts to help to deploy, to build or to use Tsunami on Amazon Web Services (AWS)
+This repository contains a couple of additional scripts to help you to build, to deploy or to use Tsunami on Amazon Web Services (AWS)
 
 - AWS CloudFormation [template](https://raw.github.com/sebsto/tsunami-udp/master/cfn-tsunami.json) to create a Tsunami Build Server
-- Bootrap [shell script](https://raw.github.com/sebsto/tsunami-udp/master/bootstrap.sh) to download and to build Tsunami on an Amazon EC2 Instance
+- Bootstrap [shell script](https://raw.github.com/sebsto/tsunami-udp/master/bootstrap.sh) to download and to build Tsunami on an Amazon EC2 Instance
 - Binaries [are available](https://github.com/sebsto/tsunami-udp/wiki/Binaries) for your convenience
 
 ========================================================================
