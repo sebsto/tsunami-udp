@@ -44,7 +44,7 @@
 	  "S3DistributionBucket" : {
 		   "Type" : "AWS::S3::Bucket",
 		   "Properties" : {
-		      "BucketName" : {"Ref" : "S3DistributionBucketName"},
+		      "BucketName" : {"Ref" : "S3DistributionBucketName"}
 		   }
 	  },  
  
