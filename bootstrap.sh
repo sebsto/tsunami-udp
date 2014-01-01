@@ -19,6 +19,7 @@ let BUILD_NUMBER=OLD_BUILD_NUMBER+1
 sed -e "/TSUNAMI_CVS_BUILDNR/s/$OLD_BUILD_NUMBER/$BUILD_NUMBER/" include/tsunami-cvs-buildnr.h > include/tsunami-cvs-buildnr.h.NEW
 mv include/tsunami-cvs-buildnr.h.NEW include/tsunami-cvs-buildnr.h
 
-# compile
+# compile & distribute
 make
+./distribute.sh
 
