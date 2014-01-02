@@ -109,7 +109,7 @@
 			"UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
 						"#!/bin/bash\n",
 						"echo \"", { "Ref" : "S3DistributionBucketName" }, "\" > /dist_bucket_name # will be reused by bootstrap script\n",
-			            "wget -q -O - 'https://raw.github.com/sebsto/tsunami-udp/master/bootstrap.sh' | sh\n"
+			            "wget -q -O - 'https://raw.github.com/sebsto/tsunami-udp/master/AWS/bootstrap.sh' | sh\n"
 						] ] } },
             "KeyName" : {"Ref" : "KeyName"},
 			"Tags" : [ {"Key" : "Name", "Value" : "TsunamiServer"}],
