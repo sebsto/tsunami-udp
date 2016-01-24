@@ -209,7 +209,7 @@ int ttp_open_transfer(ttp_session_t *session, const char *remote_filename, const
     xfer->local_filename  = local_filename;
 
     /* read in the file length, block size, block count, and run epoch */
-    if (fread(&xfer->file_size,   8, 1, session->server) < 1) return warn("Could not read file size");         xfer->file_size   = ntohll(xfer->file_size);
+    if (fread(&xfer->file_size,   8, 1, session->server) < 1) return warn("Could not read file size");         xfer->file_size   = tsunami_ntohll(xfer->file_size);
     if (fread(&temp,              4, 1, session->server) < 1) return warn("Could not read block size");        if (htonl(temp) != param->block_size) return warn("Block size disagreement");
     if (fread(&xfer->block_count, 4, 1, session->server) < 1) return warn("Could not read number of blocks");  xfer->block_count = ntohl (xfer->block_count);
     if (fread(&xfer->epoch,       4, 1, session->server) < 1) return warn("Could not read run epoch");         xfer->epoch       = ntohl (xfer->epoch);

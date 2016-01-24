@@ -3,6 +3,11 @@ The current Tsunami protocol version is: v1.1
 Improvements and protocol version compliant new features
 are added in the cvs builds.
 
+build 20160123
+  - fixed build failure on OS X El Capitan
+   - added 'tsunami_' prefix to 'htonll' and 'ntohll' function name
+     'htonll' and 'ntohll' conflicted from OS X Yosemite
+
 build 20131230
    - do not inline got_block function - allows to compile on OS X Mavericks (thanks Matt Yanchyshyn for the suggestion) 
 

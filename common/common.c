@@ -141,12 +141,12 @@ u_int64_t get_usec_since(struct timeval *old_time)
 
 
 /*------------------------------------------------------------------------
- * u_int64_t htonll(u_int64_t value);
+ * u_int64_t tsunami_htonll(u_int64_t value);
  *
  * Converts the given 64-bit value in host byte order to network byte
  * order and returns it.
  *------------------------------------------------------------------------*/
-u_int64_t htonll(u_int64_t value)
+u_int64_t tsunami_htonll(u_int64_t value)
 {
     static int necessary = -1;
 
@@ -186,14 +186,14 @@ char *make_transcript_filename(char *buffer, time_t epoch, const char *extension
 
 
 /*------------------------------------------------------------------------
- * u_int64_t ntohll(u_int64_t value);
+ * u_int64_t tsunami_ntohll(u_int64_t value);
  *
  * Converts the given 64-bit value in network byte order to host byte
  * order and returns it.
  *------------------------------------------------------------------------*/
-u_int64_t ntohll(u_int64_t value)
+u_int64_t tsunami_ntohll(u_int64_t value)
 {
-    return htonll(value);
+    return tsunami_htonll(value);
 }
 
 
