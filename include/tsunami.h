@@ -138,9 +138,9 @@ extern char g_error[];  /* buffer for the most recent error string    */
 /* common.c */
 int        get_random_data         (u_char *buffer, size_t bytes);
 u_int64_t  get_usec_since          (struct timeval *old_time);
-u_int64_t  htonll                  (u_int64_t value);
+u_int64_t  _htonll                  (u_int64_t value);
 char      *make_transcript_filename(char *buffer, time_t epoch, const char *extension);
-u_int64_t  ntohll                  (u_int64_t value);
+u_int64_t  _ntohll                  (u_int64_t value);
 u_char    *prepare_proof           (u_char *buffer, size_t bytes, const u_char *secret, u_char *digest);
 int        read_line               (int fd, char *buffer, size_t buffer_length);
 int        fread_line              (FILE *f, char *buffer, size_t buffer_length);
