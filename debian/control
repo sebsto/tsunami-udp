@@ -1,0 +1,19 @@
+Source: tsunami-udp
+Section: net
+Priority: optional
+Maintainer: Gerard Hickey <hickey@kinetic-compute.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.6
+Homepage: https://github.com/sebsto/tsunami-udp
+
+Package: tsunami-udp
+Depends: ${shlibs:Depends}, ${misc:Depends}, libssl-dev
+Architecture: any
+Description: Fast user-space file transfer protocol
+ A fast user-space file transfer protocol that uses TCP control and UDP data
+ for transfer over very high speed long distance networks (≥ 1 Gbps and even
+ 10 GE), designed to provide more throughput than possible with TCP over the
+ same networks. The project is based on original Indiana University 2002
+ Tsunami source code, but has been significantly improved and extended. As
+ such, large portions of the program today are courtesy by Aalto University
+ Metsähovi Radio Observatory. 
