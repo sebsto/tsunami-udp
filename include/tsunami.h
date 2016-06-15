@@ -72,6 +72,11 @@
 #include <sys/time.h>   /* for struct timeval          */
 #include <stdio.h>      /* for NULL, FILE *, etc.      */
 
+// Needed to detect OSX versions greater than 10.10
+#ifdef __APPLE__
+#include <Availabilty.h>
+#endif 
+
 #include "tsunami-cvs-buildnr.h"   /* for the current TSUNAMI_CVS_BUILDNR */
 
 
@@ -88,6 +93,14 @@
 #define tv_diff_usec(newer,older) ((newer.tv_sec-older.tv_sec)*1e6 + (newer.tv_usec-older.tv_usec))
 
 typedef unsigned long long ull_t;
+
+#ifndef __APPLE__
+#define need_htonll 1
+#define need_ntohll 1
+#elif __MAC_OS_X_VERSION_MAX_ALLOWED < 101000
+#define need_htonll 1
+#define need_ntohll 1
+#endif
 
 /*------------------------------------------------------------------------
  * Global constants.
@@ -138,9 +151,13 @@ extern char g_error[];  /* buffer for the most recent error string    */
 /* common.c */
 int        get_random_data         (u_char *buffer, size_t bytes);
 u_int64_t  get_usec_since          (struct timeval *old_time);
-u_int64_t  _htonll                  (u_int64_t value);
+#ifdef need_htonll
+u_int64_t  htonll                  (u_int64_t value);
+#endif
+#ifdef need_ntohll
+u_int64_t  ntohll                  (u_int64_t value);
+#endif
 char      *make_transcript_filename(char *buffer, time_t epoch, const char *extension);
-u_int64_t  _ntohll                  (u_int64_t value);
 u_char    *prepare_proof           (u_char *buffer, size_t bytes, const u_char *secret, u_char *digest);
 int        read_line               (int fd, char *buffer, size_t buffer_length);
 int        fread_line              (FILE *f, char *buffer, size_t buffer_length);
