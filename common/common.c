@@ -140,7 +140,8 @@ u_int64_t get_usec_since(struct timeval *old_time)
 }
 
 
-#ifndef _APPLE_
+
+#ifdef need_htonll
 /*------------------------------------------------------------------------
  * u_int64_t htonll(u_int64_t value);
  *
@@ -161,7 +162,7 @@ u_int64_t htonll(u_int64_t value)
     else
         return value;
 }
-#endif /* _APPLE_ */
+#endif
 
 
 /*------------------------------------------------------------------------
@@ -187,7 +188,7 @@ char *make_transcript_filename(char *buffer, time_t epoch, const char *extension
 }
 
 
-#ifndef _APPLE_
+#ifdef need_ntohll
 /*------------------------------------------------------------------------
  * u_int64_t ntohll(u_int64_t value);
  *
@@ -198,8 +199,7 @@ u_int64_t ntohll(u_int64_t value)
 {
     return htonll(value);
 }
-#endif /* _APPLE_ */
-
+#endif
 
 /*------------------------------------------------------------------------
  * u_char *prepare_proof(u_char *buffer, size_t bytes,
