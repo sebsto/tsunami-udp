@@ -97,7 +97,7 @@ typedef unsigned long long ull_t;
 #ifndef __APPLE__
 #define need_htonll 1
 #define need_ntohll 1
-#elif __MAC_OS_X_VERSION_MAX_ALLOWED < 1090
+#elif __MAC_OS_X_VERSION_MAX_ALLOWED < 101000
 #define need_htonll 1
 #define need_ntohll 1
 #endif
