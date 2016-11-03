@@ -1,0 +1,17 @@
+aclocal.m4
+autom4te.cache/*
+*.deps*
+*.log
+*.sub
+*.status
+*Makefile
+Makefile
+*.in
+*.guess
+config.h
+depcomp
+install-sh
+missing
+stamp-h1
+configure
+*.spec
