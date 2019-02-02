@@ -78,6 +78,9 @@
 #ifdef VSIB_REALTIME
 #include "parse_evn_filename.h" /* EVN file name parsing for start time, station code, etc */
 #endif
+#ifdef __linux__
+#include "../common/linux_endian.h"
+#endif
 
 /*------------------------------------------------------------------------
  * int ttp_accept_retransmit(ttp_session_t *session,

@@ -71,6 +71,9 @@
 
 #include "md5.h"         /* for MD5 message digest support        */
 #include "tsunami.h"     /* for Tsunami function prototypes, etc. */
+#ifdef __linux__
+#include "linux_endian.h"
+#endif
 
 
 /*------------------------------------------------------------------------
