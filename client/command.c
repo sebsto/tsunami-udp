@@ -237,6 +237,7 @@ int command_dir(command_t *command, ttp_session_t *session)
     } 
     fprintf(stderr, "\n");
     fwrite("\0", 1, 1, session->server);
+    fflush(session->server);
     return 0;
 }
 
