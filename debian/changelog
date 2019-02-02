@@ -1,0 +1,5 @@
+tsunami-udp (1.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- vagrant <vagrant@ubuntu14>  Mon, 30 May 2016 06:04:14 +0000
